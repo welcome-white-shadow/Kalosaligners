@@ -1,0 +1,102 @@
+/* =========================================================
+   Check-Eligibility Wizard — Kalos
+   ========================================================= */
+.wiz { min-height: 100vh; background: var(--bg-alt); display: flex; flex-direction: column; }
+
+.wiz__bar { background: #fff; border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 10; }
+.wiz__bar-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.wiz__close {
+  width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--bg-alt); color: var(--muted); font-size: 16px; font-weight: 700;
+  transition: background .15s ease, color .15s ease;
+}
+.wiz__close:hover { background: var(--accent-soft); color: var(--primary); }
+.wiz__progress { height: 5px; background: var(--line); }
+.wiz__progress span { display: block; height: 100%; background: var(--accent); transition: width .35s ease; }
+
+.wiz__body { flex: 1; width: 100%; max-width: 720px; padding: 36px 24px 60px; }
+
+.wiz__steps { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 24px; }
+.wiz__chip {
+  font-size: 12.5px; font-weight: 700; color: var(--muted);
+  background: #fff; border: 1px solid var(--line); padding: 6px 12px; border-radius: 999px;
+}
+.wiz__chip.is-active { color: var(--primary); border-color: var(--primary); background: #fff; }
+.wiz__chip.is-done { color: var(--accent-dark); border-color: var(--accent); background: var(--accent-soft); }
+
+.wiz__card {
+  background: #fff; border: 1px solid var(--line); border-radius: 20px;
+  box-shadow: var(--shadow); padding: 34px;
+}
+.wiz__title { font-family: var(--font-display); font-weight: 900; font-size: clamp(24px, 3.6vw, 34px); color: var(--ink); }
+.wiz__sub { color: var(--muted); font-size: 16px; margin: 10px 0 24px; }
+.wiz__subhead { font-size: 18px; margin: 28px 0 14px; color: var(--ink); }
+
+/* option chips */
+.wiz__chips { display: flex; flex-wrap: wrap; gap: 12px; }
+.wiz__opt {
+  font-family: var(--font-body); font-weight: 700; font-size: 15px; cursor: pointer;
+  background: #fff; color: var(--ink); border: 2px solid var(--line);
+  padding: 13px 22px; border-radius: 12px; transition: all .15s ease;
+}
+.wiz__opt:hover { border-color: var(--accent); }
+.wiz__opt.is-selected { border-color: var(--primary); background: var(--accent-soft); color: var(--primary); }
+
+/* scan option cards */
+.wiz__scan { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.wiz__scanopt {
+  text-align: left; cursor: pointer; background: #fff; border: 2px solid var(--line);
+  border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 6px;
+  font-family: var(--font-body); transition: all .15s ease;
+}
+.wiz__scanopt:hover { border-color: var(--accent); }
+.wiz__scanopt.is-selected { border-color: var(--primary); background: var(--accent-soft); }
+.wiz__scanopt strong { font-size: 17px; color: var(--ink); }
+.wiz__scanopt small { color: var(--muted); font-size: 13.5px; }
+@media (max-width: 560px) { .wiz__scan { grid-template-columns: 1fr; } }
+
+/* form fields */
+.wiz__form { display: grid; gap: 16px; }
+.wiz__row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media (max-width: 560px) { .wiz__row { grid-template-columns: 1fr; } }
+.wiz__field { display: flex; flex-direction: column; }
+.wiz__label { font-size: 13px; font-weight: 700; color: var(--muted); margin-bottom: 7px; }
+.wiz__field input {
+  font-family: var(--font-body); font-size: 15px; font-weight: 500; color: var(--ink);
+  padding: 14px 16px; border: 1.5px solid var(--line); border-radius: 12px; outline: none;
+  transition: border-color .15s ease, box-shadow .15s ease;
+}
+.wiz__field input::placeholder { color: #9aa1ad; }
+.wiz__field input:focus { border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+.wiz__field input.is-error { border-color: #d33; }
+.wiz__mobile { display: flex; align-items: stretch; }
+.wiz__cc {
+  display: flex; align-items: center; font-weight: 700; color: var(--ink);
+  background: var(--bg-alt); border: 1.5px solid var(--line); border-right: none;
+  border-radius: 12px 0 0 12px; padding: 0 14px; font-size: 15px;
+}
+.wiz__mobile input { border-radius: 0 12px 12px 0; width: 100%; }
+
+.wiz__err { color: #d33; font-size: 12.5px; margin-top: 8px; font-weight: 600; display: block; }
+
+/* nav buttons */
+.wiz__nav { display: flex; align-items: center; justify-content: space-between; margin-top: 24px; gap: 14px; }
+.wiz__nav .btn-lg { min-width: 180px; }
+@media (max-width: 480px) {
+  .wiz__nav .btn-lg { min-width: 0; flex: 1; }
+  .wiz__card { padding: 24px 20px; }
+}
+
+/* done */
+.wiz__done { text-align: center; }
+.wiz__tick {
+  width: 72px; height: 72px; border-radius: 50%; background: var(--accent);
+  color: var(--primary-dark); font-size: 36px; font-weight: 900;
+  display: grid; place-items: center; margin: 0 auto 20px;
+}
+.wiz__done .wiz__sub { max-width: 480px; margin-left: auto; margin-right: auto; }
+.wiz__done .btn { margin-top: 8px; }
+.wiz__wa { background: #25D366 !important; color: #fff !important; border-color: #25D366 !important; display: inline-flex; align-items: center; gap: 10px; }
+.wiz__wa:hover { background: #1eb457 !important; }
+.wiz__done-home { display: block; margin-top: 16px; color: var(--muted); font-weight: 600; }
+.wiz__done-home:hover { color: var(--primary); }
