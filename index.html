@@ -112,9 +112,36 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,500;1,600&display=swap" rel="stylesheet" />
+    <style>
+      /* Instant loading screen (shown before React mounts — no blank white) */
+      #app-loader {
+        position: fixed; inset: 0; display: flex; flex-direction: column;
+        align-items: center; justify-content: center; gap: 20px;
+        background: #fbfdf2; z-index: 9999;
+      }
+      #app-loader .al-name {
+        font-family: 'Playfair Display', Georgia, serif; font-weight: 800;
+        font-size: 38px; color: #7C1D2C; letter-spacing: -0.5px;
+      }
+      #app-loader .al-name small {
+        display: block; font-family: system-ui, sans-serif; font-size: 11px;
+        letter-spacing: 5px; text-transform: uppercase; color: #8DA916; font-weight: 700; margin-top: 4px;
+      }
+      #app-loader .al-ring {
+        width: 34px; height: 34px; border-radius: 50%;
+        border: 3px solid #EEF4D2; border-top-color: #A8C61E;
+        animation: al-spin .8s linear infinite;
+      }
+      @keyframes al-spin { to { transform: rotate(360deg); } }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <div id="app-loader">
+        <div class="al-name">Kalos<small>aligners</small></div>
+        <div class="al-ring"></div>
+      </div>
+    </div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
